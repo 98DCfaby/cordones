@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Campistas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #343a40;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2rem;
+            color: #495057;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+        }
+
+        td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #1e7e34;
+        }
+
+        .btn-view {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background-color: #117a8b;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #bd2130;
+        }
+
+        .no-data {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        button i {
+            margin-right: 8px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a.button-link {
+            text-decoration: none;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #0056b3;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Espacios de reserva de camping</h1>
+        <nav>
+            <a href="#lista">Lista de Espacios</a>
+            <a href="/listadoCampista/">Listado de campista</a>
+            <a href="/listadoReservaCamping/">Listado Reservas</a>
+        </nav>
+    </header>
+
+    <h1>Listado de Campistas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th><i class="fas fa-id-badge"></i> ID</th>
+                <th><i class="fas fa-user"></i> Nombre</th>
+                <th><i class="fas fa-user"></i> Apellido</th>
+                <th><i class="fas fa-envelope"></i> Correo Electrónico</th>
+                <th><i class="fas fa-phone"></i> Teléfono</th>
+                <th><i class="fas fa-map-marker-alt"></i> Dirección</th>
+                <th><i class="fas fa-cogs"></i> Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campista in campistas %}
+            <tr>
+                <td>{{ campista.id }}</td>
+                <td>{{ campista.nombre }}</td>
+                <td>{{ campista.apellido }}</td>
+                <td>{{ campista.correo }}</td>
+                <td>{{ campista.telefono }}</td>
+                <td>{{ campista.direccion }}</td>
+                <td class="actions">
+                    <a href="/editar_campista/{{ campista.id }}/" class="btn-edit"><i class="fas fa-edit"></i> Editar</a>
+                    <a href="/eliminar_campista/{{ campista.id }}/" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este campista?');"><i class="fas fa-trash"></i> Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="no-data">No hay campistas registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/nuevoCampista/" class="button-link">
+        <button type="button">
+            <i class="fas fa-plus icon"></i> Agregar Nuevo Camping
+        </button>
+    </a>
+</body>
+
+</html>
+

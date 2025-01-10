@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Campista</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9f1f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+        }
+
+        .input-group i {
+            padding: 10px;
+            background-color: #007bff;
+            border-radius: 8px 0 0 8px;
+            color: white;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+
+        button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/guardar_campista/" method="post">
+        <h1>Agregar Nuevo Campista</h1>
+        {% csrf_token %}
+        
+        <!-- ID -->
+        <div class="input-group">
+            <i class="fas fa-id-badge"></i>
+            <input type="number" name="id" id="id" placeholder="ID" required>
+        </div>
+
+        <!-- Nombre -->
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+        </div>
+
+        <!-- Apellido -->
+        <div class="input-group">
+            <i class="fas fa-user-tag"></i>
+            <input type="text" name="apellido" id="apellido" maxlength="100" placeholder="Apellido" required>
+        </div>
+
+        <!-- Correo -->
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="correo" id="correo" placeholder="Correo Electrónico" required>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="input-group">
+            <i class="fas fa-phone-alt"></i>
+            <input type="tel" name="telefono" id="telefono" maxlength="15" placeholder="Teléfono" required>
+        </div>
+
+        <!-- Dirección -->
+        <div class="input-group">
+            <i class="fas fa-home"></i>
+            <textarea name="direccion" id="direccion" placeholder="Dirección" rows="3"></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">
+                <i class="fas fa-save"></i> Guardar
+            </button>
+            <button type="reset">
+                <i class="fas fa-times"></i> Cancelar
+            </button>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Reserva</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9f1f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        form {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+        }
+
+        .input-group i {
+            padding: 8px;
+            background-color: #007bff;
+            border-radius: 8px 0 0 8px;
+            color: white;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 90px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            width: 48%;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+
+        button i {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crear Nueva Reserva</h1>
+    <form method="post" action="/guardar_reserva/">
+        {% csrf_token %}
+
+        <!-- Fecha de inicio -->
+        <label for="fechainicio">Fecha de Inicio:</label>
+        <div class="input-group">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="date" id="fechainicio" name="fechainicio" required>
+        </div>
+
+        <!-- Fecha de fin -->
+        <label for="fechafin">Fecha de Fin:</label>
+        <div class="input-group">
+            <i class="fas fa-calendar-check"></i>
+            <input type="date" id="fechafin" name="fechafin" required>
+        </div>
+
+        <!-- Campista -->
+        <label for="campista">Campista:</label>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <select name="campista_id" id="campista_id" required>
+            {% for campista in campistas %}
+            <option value="{{ campista.id }}">{{ campista.nombre }} {{ campista.apellido }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <!-- Tipo de alojamiento -->
+        <label for="tipoalojamiento">Tipo de Alojamiento:</label>
+        <div class="input-group">
+            <i class="fas fa-bed"></i>
+            <select id="tipoalojamiento" name="tipoalojamiento" required>
+                <option value="Tienda">Tienda</option>
+                <option value="Cabaña">Cabaña</option>
+                <option value="Caravana">Caravana</option>
+            </select>
+        </div>
+
+        <!-- Número de personas -->
+        <label for="numeropersonas">Número de Personas:</label>
+        <div class="input-group">
+            <i class="fas fa-users"></i>
+            <input type="number" id="numeropersonas" name="numeropersonas" required>
+        </div>
+
+        <!-- Estado de la reserva -->
+        <label for="estadoreserva">Estado de la Reserva:</label>
+        <div class="input-group">
+            <i class="fas fa-tasks"></i>
+            <select id="estadoreserva" name="estadoreserva" required>
+                <option value="Confirmada">Confirmada</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="Cancelada">Cancelada</option>
+            </select>
+        </div>
+
+        <!-- Observaciones -->
+        <label for="observaciones">Observaciones:</label>
+        <div class="input-group">
+            <i class="fas fa-comment-dots"></i>
+            <textarea id="observaciones" name="observaciones"></textarea>
+        </div>
+
+        <!-- Botones -->
+        <div class="form-actions">
+            <button type="submit"><i class="fas fa-save"></i> Guardar</button>
+            <button type="reset"><i class="fas fa-times"></i> Cancelar</button>
+        </div>
+    </form>
+</body>
+</html>
+

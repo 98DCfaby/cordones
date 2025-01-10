@@ -1,0 +1,137 @@
+{% extends "./plantilla.html" %} <!--Con esto heredamos los archivos de html-->
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        #lista {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .space {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .space:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .space h2 {
+            font-size: 24px;
+            margin: 0;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        .space p {
+            font-size: 16px;
+            color: #555;
+            padding: 10px 20px;
+        }
+
+        .space .address {
+            font-style: italic;
+            color: #777;
+        }
+
+        .buttons {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .buttons .button {
+            display: inline-block;
+            background-color: #ff6f61; /* Nuevo color de fondo para Registrarse */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .buttons .button:hover {
+            background-color: #e55d4c; /* Nuevo color de fondo en hover para Registrarse */
+        }
+
+        .buttons .button-reserve {
+            display: inline-block;
+            background-color: #0069d9; /* Nuevo color de fondo para Reservar */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .buttons .button-reserve:hover {
+            background-color: #0056b3; /* Nuevo color de fondo en hover para Reservar */
+        }
+    </style>
+</head>
+<body>
+    <div id="lista" class="container">
+        <h1>Listado de Espacios de Alojamiento</h1>
+        
+        <div class="space">
+            <h2>Cabaña</h2>
+            <p>Un espacio acogedor con todas las comodidades para tu estadía.</p>
+            <p class="address">Ubicación: Cerca del lago, rodeada de naturaleza.</p>
+
+            <div class="buttons">
+                <a href="listadoCampista/" class="button">registrarse</a>
+                <a href="listadoReservaCamping/" class="button-reserve">Reservar</a>
+            </div>
+        </div>
+        
+
+        <div class="space">
+            <h2>Tienda</h2>
+            <p>Ideal para quienes disfrutan del camping y la aventura al aire libre.</p>
+            <p class="address">Ubicación: Zona de camping, bajo la sombra de los árboles.</p>
+            <div class="buttons">
+                <a href="listadoCampista/" class="button">registrarse</a>
+                <a href="listadoReservaCamping/" class="button-reserve">Reservar</a>
+            </div>
+        </div>
+
+        <div class="space">
+            <h2>Caravana</h2>
+            <p>Espacio para aparcar tu caravana con servicios básicos disponibles.</p>
+            <p class="address">Ubicación: Área designada junto al parque de recreación.</p>
+            <div class="buttons">
+                <a href="listadoCampista/" class="button">registrarse</a>
+                <a href="listadoReservaCamping/" class="button-reserve">Reservar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

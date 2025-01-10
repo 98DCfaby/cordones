@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Espacios de Estudio</title>
+    <!--Importando bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #0056b3;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        .notifications {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notifications-icon {
+            font-size: 1.8em;
+        }
+
+        .notifications-counter {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.85em;
+            border-radius: 50%;
+            padding: 3px 8px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .space {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .space:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-5px);
+        }
+
+        .space h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .space p {
+            font-size: 1.1em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .space .address {
+            font-style: italic;
+            color: #777;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons .button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1.1em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .buttons .button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: black;
+            padding: 15px 30px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        footer .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Espacios de reserva de camping</h1>
+    <nav>
+        <a href="#lista">Lista de Espacios</a>
+        <a href="listadoCampista/">Listado de campista</a>
+        <a href="listadoReservaCamping/">Listado Reservas</a>
+    </nav>
+</header>
+{% block body %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Desarrollado por:</strong> David Cordonez </p>
+            </div>
+            <div class="col-md-6 text-end">
+                <p><strong>© 2025 Universidad Técnica de Cotopaxi</strong></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
